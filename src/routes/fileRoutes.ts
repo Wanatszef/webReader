@@ -23,5 +23,5 @@ fileRoutes.get('/script.js', () => {
     });
 });
 
-
+//todo usunąć logi
 export default fileRoutes;
