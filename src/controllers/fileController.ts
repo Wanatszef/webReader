@@ -1,15 +1,19 @@
-import { Context} from 'elysia';
+import { Context } from 'elysia';
 import parseCSV from '../utils/csvParser';
 
 export const handleFileUpload = async (ctx: Context) => {
     try {
         const fileBuffer = await ctx.body as Buffer;
 
-        const fileContent = fileBuffer.toString('utf8');
+        
+        const fileContent = Buffer.from(fileBuffer).toString('utf8');
 
+        console.log('Zawartość pliku:', fileContent);  
+
+      
         const data = parseCSV(fileContent);
 
-        return { message: 'File received', data };
+        return { message: 'Plik został przetworzony', data };
         
     } catch (error) {
         console.error('Błąd przetwarzania pliku:', error);
