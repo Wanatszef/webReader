@@ -8,19 +8,19 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
         return;
     }
 
-    const formData = new FormData();
-    formData.append('file', file);
-
     try {
         const response = await fetch('http://localhost:3000/upload', {
             method: 'POST',
-            body: formData,
+            headers: {
+                'Content-Type': 'application/octet-stream', 
+            },
+            body: file, 
         });
         const data = await response.json();
         console.log(data);
-        alert('File has been send successfully!');
+        alert('Plik został wysłany pomyślnie!');
     } catch (error) {
         console.error('Błąd:', error);
-        alert('An error occurred while sending the file.');
+        alert('Wystąpił błąd podczas wysyłania pliku.');
     }
 });
