@@ -1,21 +1,18 @@
-import { Context, error } from 'elysia';
+import { Context} from 'elysia';
 import parseCSV from '../utils/csvParser';
 
-export const handleFileUpload = async (ctx: Context) => 
-{
-    
-    const formData = ctx.body as FormData;
+export const handleFileUpload = async (ctx: Context) => {
+    try {
+        const fileBuffer = await ctx.body as Buffer;
 
-    const file = formData.get('file');
+        const fileContent = fileBuffer.toString('utf8');
 
-    if(!(file instanceof Blob))
-    {
-        return {error: "File not found"};
+        const data = parseCSV(fileContent);
+
+        return { message: 'File received', data };
+        
+    } catch (error) {
+        console.error('Błąd przetwarzania pliku:', error);
+        return { error: 'Błąd podczas przetwarzania pliku' };
     }
-
-    const fileContent = await file.text();
-
-    const data = parseCSV(fileContent);
-
-    return {message: 'File received', data};
-}
+};
