@@ -21,6 +21,5 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
         alert('Plik został wysłany pomyślnie!');
     } catch (error) {
         console.error('Błąd:', error);
-        alert('Wystąpił błąd podczas wysyłania pliku.');
     }
 });
