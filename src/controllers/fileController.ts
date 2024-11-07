@@ -8,8 +8,6 @@ export const handleFileUpload = async (ctx: Context) => {
         
         const fileContent = Buffer.from(fileBuffer).toString('utf8');
 
-        console.log('Zawartość pliku:', fileContent);  
-
       
         const data = parseCSV(fileContent);
 
