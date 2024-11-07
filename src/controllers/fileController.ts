@@ -1,5 +1,6 @@
 import { Context } from 'elysia';
 import parseCSV from '../utils/csvParser';
+import checkDomainStatus from '../utils/checkDomainStatus';
 
 export const handleFileUpload = async (ctx: Context) => {
     try {
@@ -9,9 +10,15 @@ export const handleFileUpload = async (ctx: Context) => {
         const fileContent = Buffer.from(fileBuffer).toString('utf8');
 
       
-        const data = parseCSV(fileContent);
+        const data: string[] = parseCSV(fileContent);
 
-        return { message: 'Plik został przetworzony', data };
+        if(data.length !== 0)
+        {
+            for (let i = 0; i < data.length; i++) {
+                checkDomainStatus(data[i]);
+              }
+              //todo find out does it work
+        }
         
     } catch (error) {
         console.error('Błąd przetwarzania pliku:', error);
