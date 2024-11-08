@@ -12,8 +12,6 @@ const parseCSV = (fileContent: string): string[] => {
 
     
     const domains: string[] = csvData.data.map((row: { Domain: string }) => row.Domain).filter(Boolean);
-
-    //fix  SyntaxError: JSON.parse: unexpected end of data at line 1 column 1 of the JSON data
     return domains;
 };
 
