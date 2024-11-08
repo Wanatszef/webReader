@@ -17,7 +17,7 @@ export const handleFileUpload = async (ctx: Context) => {
             for (let i = 0; i < data.length; i++) {
                 checkDomainStatus(data[i]);
               }
-              //todo find out does it work
+              
         }
         
     } catch (error) {
