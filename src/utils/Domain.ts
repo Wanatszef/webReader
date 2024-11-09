@@ -1,4 +1,4 @@
-class Domain
+export class Domain
 {
     private domain: string;    
     private status: number;
