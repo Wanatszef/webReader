@@ -5,55 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload CSV</title>
     <style>
-        #domainsTable {
-            display: none;
-            width: 100%;
-            border-collapse: collapse;
+        /* Dark mode styl strony */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        #domainsTable th, #domainsTable td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
+        h1 {
+            color: #ffffff;
+            margin-top: 30px;
+            font-size: 24px;
         }
 
-        #domainsTable th {
-            background-color: #f2f2f2;
+        /* Formularz i przycisk */
+        #uploadForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
         }
 
-        #domainsTable tr:nth-child(even) {
-            background-color: #f9f9f9;
+        #csvFile {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #333333;
+            border: 1px solid #444444;
+            border-radius: 5px;
         }
 
-        #domainsTable tr:hover {
-            background-color: #e6e6e6;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Spinner ładowania */
         #loadingSpinner {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 18px;
             display: none;
+            text-align: center;
         }
 
         .spinner {
             border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
+            border-top: 4px solid #ffffff;
             border-radius: 50%;
             width: 50px;
             height: 50px;
+            margin: 10px auto;
             animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* Wyśrodkowanie i stylizacja tabeli */
+        #domainsTable {
+            display: none;
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        #domainsTable th, #domainsTable td {
+            padding: 12px;
+            border: 1px solid #444444;
+            text-align: center;
+        }
+
+        #domainsTable th {
+            background-color: #333333;
+            color: #b8e994;
+            font-weight: bold;
+        }
+
+        #domainsTable tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        #domainsTable tr:hover {
+            background-color: #333333;
         }
     </style>
 </head>
@@ -63,10 +124,14 @@
         <input type="file" id="csvFile" accept=".csv" />
         <button type="submit">Wyślij</button>
     </form>
-    <div id="loadingSpinner" style="display: none;">
-        <div class="spinner"></div> Ładowanie...
+
+    <!-- Spinner ładowania -->
+    <div id="loadingSpinner">
+        <div class="spinner"></div>
+        <div>Ładowanie...</div>
     </div>
 
+    <!-- Tabela domen -->
     <table id="domainsTable">
         <thead>
             <tr>
@@ -79,6 +144,7 @@
         <tbody>
         </tbody>
     </table>
+
     <script src="script.js"></script>
 </body>
 </html>
