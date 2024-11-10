@@ -24,7 +24,7 @@ Funkcjonalności
 
 Przykład pliku.csv
 
-Domain
+Domain  
 https://www.example.com  
 https://www.przyklad.pl  
 https://www.poczta.pl  
