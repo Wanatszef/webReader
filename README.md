@@ -25,6 +25,6 @@ Funkcjonalności
 Przykład pliku.csv
 
 Domain
-https://www.example.com
-https://www.przyklad.pl
-https://www.poczta.pl
+https://www.example.com  
+https://www.przyklad.pl  
+https://www.poczta.pl  
