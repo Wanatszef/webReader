@@ -1,15 +1,30 @@
-# Elysia with Bun runtime
+WebRader
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+Aplikacja napisana w TypeScript i JavaScript, która analizuje określone domeny, sprawdza ich status oraz obecność funkcji takich jak koszyk i reklamy. Projekt realizuje zadanie automatycznego sprawdzania domen, zwracając informacje o ich dostępności i zawartości.
+Spis treści
 
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
+    Opis projektu
+    Funkcjonalności
+    Wzór CSV
 
-Open http://localhost:3000/ with your browser to see the result.
+Opis projektu
+
+Domain Checker to narzędzie, które pozwala analizować domeny na podstawie pliku CSV. Aplikacja wczytuje listę domen, a następnie sprawdza:
+
+    status HTTP każdej domeny,
+    czy na stronie znajduje się koszyk,
+    czy na stronie występują reklamy.
+
+Funkcjonalności
+
+    Analiza domen: Sprawdzenie, czy domena jest aktywna, oraz uzyskanie jej kodu statusu.
+    Sprawdzanie koszyka: Wykrycie obecności koszyka na stronie przez analizę zawartości.
+    Sprawdzanie reklam: Analiza kodu strony w poszukiwaniu fraz wskazujących na reklamy (np. adsense, google-ads.com).
+    Obsługa pliku CSV: Wczytywanie listy domen z pliku CSV do analizy.
+
+Przykład pliku.csv
+
+Domain
+https://www.example.com
+https://www.przyklad.pl
+https://www.poczta.pl

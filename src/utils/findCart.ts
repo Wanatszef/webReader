@@ -9,7 +9,6 @@ const findCart = (domainSourceCode: string): boolean =>
             /href=["'][^"']*basket[^"']*["']/i // Linki zawierające "basket" w URL
         ];
     
-        // Sprawdzamy, czy jakikolwiek wzorzec pasuje do kodu źródłowego
         return cartPatterns.some(pattern => pattern.test(domainSourceCode));
     };
 export default findCart;

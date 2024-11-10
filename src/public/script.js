@@ -48,7 +48,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     document.getElementById('loadingSpinner').style.display = 'block';
 
     try {
-        const response = await fetch('https://localhost:3000/upload', {
+        const response = await fetch('http://localhost:3000/upload', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/octet-stream',
@@ -60,6 +60,8 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
         addDomainsToTable(data);
 
         document.getElementById('loadingSpinner').style.display = 'none';
+
+        document.getElementById('results').textContent = JSON.stringify(data, null, 2);
 
     } catch (error) {
         console.error('Błąd:', error);
