@@ -28,7 +28,6 @@ function addDomainsToTable(data) {
         advertisementCell.textContent = item.Advertisement ? "Yes" : "No";
         row.appendChild(advertisementCell);
 
-        // Dodaj wiersz do tabeli
         tableBody.appendChild(row);
     });
     }
@@ -49,7 +48,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     document.getElementById('loadingSpinner').style.display = 'block';
 
     try {
-        const response = await fetch('http://localhost:3000/upload', {
+        const response = await fetch('https://localhost:3000/upload', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/octet-stream',
