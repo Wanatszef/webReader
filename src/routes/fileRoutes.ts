@@ -5,6 +5,7 @@ import {readFileSync} from 'fs';
 
 const fileRoutes = new Elysia();
 
+
 fileRoutes.post('/upload', handleFileUpload);
 
 fileRoutes.get('', () => {
