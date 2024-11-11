@@ -1,57 +1,53 @@
 function addDomainsToTable(data) {
-
-    if(data !== null)
-    {
+    if (data !== null) {
     const table = document.querySelector("#domainsTable");
-    table.style.display= "block";
+    table.style.display = "block";
 
     const tableBody = document.querySelector("#domainsTable tbody");
 
     tableBody.innerHTML = "";
 
-    data.forEach(item => {
-        const row = document.createElement("tr");
+    data.forEach((item) => {
+      const row = document.createElement("tr");
 
-        const domainCell = document.createElement("td");
-        domainCell.textContent = item.Domain;
-        row.appendChild(domainCell);
+            const domainCell = document.createElement("td");
+      domainCell.textContent = item.Domain;
+            row.appendChild(domainCell);
 
-        const statusCell = document.createElement("td");
-        statusCell.textContent = item.Status;
-        row.appendChild(statusCell);
+            const statusCell = document.createElement("td");
+      statusCell.textContent = item.Status;
+            row.appendChild(statusCell);
 
-        const cartCell = document.createElement("td");
-        cartCell.textContent = item.Cart ? "Yes" : "No";
-        row.appendChild(cartCell);
+      const cartCell = document.createElement("td");
+            cartCell.textContent = item.Cart ? "Yes" : "No";
+      row.appendChild(cartCell);
 
-        const advertisementCell = document.createElement("td");
-        advertisementCell.textContent = item.Advertisement ? "Yes" : "No";
-        row.appendChild(advertisementCell);
+            const advertisementCell = document.createElement("td");
+            advertisementCell.textContent = item.Advertisement ? "Yes" : "No";
+      row.appendChild(advertisementCell);
 
-        tableBody.appendChild(row);
+            tableBody.appendChild(row);
     });
     }
 }
 
-
-document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+document.getElementById("uploadForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const fileInput = document.getElementById('csvFile');
+    const fileInput = document.getElementById("csvFile");
     const file = fileInput.files[0];
 
     if (!file) {
-        alert('Proszę wybrać plik!');
+        alert("Proszę wybrać plik!");
         return;
     }
 
-
-    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById("loadingSpinner").style.display = "block";
 
     try {
-        const response = await fetch('http://localhost:3000/upload', {
-            method: 'POST',
+        const response = await fetch("http://localhost:3000/upload", {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/octet-stream',
+                "Content-Type": "application/octet-stream",
             },
             body: file,
         });
@@ -59,14 +55,16 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
         const data = await response.json();
         addDomainsToTable(data);
 
-        document.getElementById('loadingSpinner').style.display = 'none';
+        document.getElementById("loadingSpinner").style.display = "none";
 
-        document.getElementById('results').textContent = JSON.stringify(data, null, 2);
-
+        document.getElementById("results").textContent = JSON.stringify(
+            data,
+            null,
+            2,
+        );
     } catch (error) {
-        console.error('Błąd:', error);
+        console.error("Błąd:", error);
 
-
-        document.getElementById('loadingSpinner').style.display = 'none';
+        document.getElementById("loadingSpinner").style.display = "none";
     }
 });
