@@ -5,7 +5,7 @@ import findAds from './findAds';
 
 async function advanceCheckDomainStatus(
     url: string,
-    statusCode: number
+    statusCode: number,
 ): Promise<Domain> {
     let driver = await new Builder().forBrowser('chrome').build();
     const domain = new Domain(url);

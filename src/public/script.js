@@ -60,7 +60,7 @@ document.getElementById('uploadForm').addEventListener('submit', async e => {
         document.getElementById('results').textContent = JSON.stringify(
             data,
             null,
-            2
+            2,
         );
     } catch (error) {
         console.error('Błąd:', error);

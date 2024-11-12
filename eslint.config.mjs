@@ -18,27 +18,28 @@ export default defineConfig([
             'unused-imports': unusedImportsPlugin,
         },
         rules: {
-            indent: ['error', 4],
+            // indent: ['error', 4],            // Ustawienie wcięcia na 4 spacje
+    		'prettier/prettier': ['warn', {  // Użycie spacji zamiast tabów w Prettierze
+        	'tabWidth': 4,
+        	'useTabs': false,
+        	'endOfLine': 'auto'
+    		}],
 
             /***********************************/
             // Unused imports config begin
             '@typescript-eslint/no-unused-vars': 'off',
             'unused-imports/no-unused-imports': 'error',
             'unused-imports/no-unused-vars': [
-                'off', // to be changed to error when code is cleaned up
-                {
-                    vars: 'all',
-                    varsIgnorePattern: '^_',
-                    args: 'after-used',
-                    argsIgnorePattern: '^(_|transaction)',
-                },
-            ],
-            // Unused imports config end
-            /***********************************/
+    		'warn',
+				{
+					vars: 'all',
+					varsIgnorePattern: '^_',
+					args: 'after-used',
+					argsIgnorePattern: '^(_|transaction)',
+				},
+			],
 
-            /***********************************/
-            // Hard rules begin
-            'prettier/prettier': 'error',
+
             'no-extra-boolean-cast': 'error',
             'prefer-spread': 'error',
             '@typescript-eslint/adjacent-overload-signatures': 'error',
